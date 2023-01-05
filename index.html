@@ -6,13 +6,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Brewerys and Locations</title>
+    <title>Brewery Search App</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
   </head>
   <body>
-    <!--All our work for this lesson will go here-->
-    <h1>My App</h1>
-    <p>
-        This is my Brewery location application
-</p>
+    <h1>Brewery Search App</h1>
+    <form id="search-form">
+      <label for="county-input">Enter a county:</label><br>
+      <input type="text" id="county-input" name="county"><br>
+      <button type="submit">Search</button>
+    </form> 
+    <div id="results"></div>
+    <script src="index.js"></script>
   </body>
 </html>
