@@ -1,0 +1,26 @@
+body {
+  font-family: sans-serif;
+}
+
+#search-form {
+  display: flex;
+  align-items: center;
+}
+
+#zip-code {
+  font-size: 1em;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 0.5em;
+}
+
+button[type="submit"] {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
