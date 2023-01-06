@@ -1,39 +1,29 @@
-// https://api.openbrewerydb.org
-
-// Gets a reference to the search form and results div
+// gets a reference to the search form and results div
 const searchForm = document.getElementById('search-form');
 const resultsDiv = document.getElementById('results');
 
-// Adds a submit event listener to the search form
-searchForm.addEventListener('submit', (event) => {
-  event.preventDefault();
+// sets the default zip code
+const defaultZipCode = '10001';
 
-  // Gets the zip code that the user entered
-  const zipCode = document.getElementById('zip-code').value;
-
-//console.log(zipCode);
-
-  // Makes a GET request to the OpenBreweryDB API to search for breweries by zip code
+// function to search for breweries by zip code
+const search = (zipCode) => {
+  // make a get request to the openbrewerydb api to search for breweries by zip code
   fetch(`https://api.openbrewerydb.org/breweries?by_postal=${zipCode}`)
+
     .then((response) => {
-      // Convert the response to JSON
       return response.json();
     })
-    .then((breweries) => {
-     // Uses the forEach method to find breweries with the correct postal code
-     breweries.forEach((brewery) => {
-      if (brewery.postal_code === zipCode) {
-        matchingBreweries.push(brewery);
-      }
-    });
-      // Limits the array to the first 5 elements
-      const limitedBreweries = breweries.slice(0, 5);
 
-      // Clears the previous search results
+    .then((breweries) => {
+      
+      //console logged to check and make sure breweries were returned correctly
+      console.log(breweries);
+
+      // clears the previous search results
       resultsDiv.innerHTML = '';
 
-      // Displays the search results
-      limitedBreweries.forEach((brewery) => {
+      // displays the search results
+      breweries.forEach((brewery) => {
         resultsDiv.innerHTML += `
           <div class="card">
             <div class="card-header">
@@ -42,16 +32,66 @@ searchForm.addEventListener('submit', (event) => {
             <div class="card-body">
               <p>${brewery.street}</p>
               <p>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
+              <p>${brewery.phone}</p>
             </div>
           </div>
         `;
       });
     });
+};
+
+// submit event listener
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  // gets the zip code that the user entered, or uses the default if no zip code was entered
+  const zipCode = document.getElementById('zip-code').value || defaultZipCode;
+
+  // runs the search function
+  search(zipCode);
 });
 
-// Adds an event listener for the reset button
+// reset button event listener
 document.getElementById('reset-button').addEventListener('click', () => {
-  // Clears the search results and the zip code input
+
+  //clears the page
+
   resultsDiv.innerHTML = '';
   document.getElementById('zip-code').value = '';
 });
+
+// Making a default GET request to an external API to get the default zip code
+fetch(`https://api.openbrewerydb.org/breweries?by_postal=10001`)
+  .then((response) => {
+    // Converts the response to JSON
+    return response.json();
+  })
+  .then((defaultBreweries) => {
+          // Displays the default search results
+          defaultBreweries.forEach((brewery) => {
+            resultsDiv.innerHTML += `
+              <div class="card">
+                <div class="card-header">
+                  <h2>${brewery.name}</h2>
+                </div>
+                <div class="card-body">
+                  <p>${brewery.street}</p>
+                  <p>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
+                  <p>${brewery.phone}</p>
+                </div>
+              </div>
+          `
+          })
+  });
+      //Add functionality to search by pressing enter
+  searchForm.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+
+      // get the zip code that user entered, or uses the default if no zip code was entered
+      const zipCode = document.getElementById('zip-code').value || defaultZipCode;
+    
+      // searches for breweries by the zip code
+      search(zipCode);
+    }
+  });
