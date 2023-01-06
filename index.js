@@ -13,15 +13,19 @@ const search = (zipCode) => {
     .then((response) => {
       return response.json();
     })
-
     .then((breweries) => {
       
       //console logged to check and make sure breweries were returned correctly
-      console.log(breweries);
+      //console.log(breweries);
 
       // clears the previous search results
       resultsDiv.innerHTML = '';
 
+
+      if (breweries.length === 0) {
+        // If there are no results, display a message
+        resultsDiv.innerHTML = '<h2>No Breweries listed in this area, try another zip code</h2>';
+      } else {
       // displays the search results
       breweries.forEach((brewery) => {
         resultsDiv.innerHTML += `
@@ -30,15 +34,23 @@ const search = (zipCode) => {
               <h2>${brewery.name}</h2>
             </div>
             <div class="card-body">
-              <p>${brewery.street}</p>
+              <p>${brewery.street || 'Not Listed'}</p>
               <p>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
-              <p>${brewery.phone}</p>
+              <p>${brewery.phone || 'Unavailable'}</p>
             </div>
           </div>
         `;
       });
+      resultsDiv.innerHTML += '<h2>End of Search Results</h2>';
+    }
     });
-};
+  };
+
+
+/*///////////////
+/Event Listeners/
+///////////////*/
+
 
 // submit event listener
 searchForm.addEventListener('submit', (event) => {
@@ -51,16 +63,41 @@ searchForm.addEventListener('submit', (event) => {
   search(zipCode);
 });
 
+
+
 // reset button event listener
 document.getElementById('reset-button').addEventListener('click', () => {
 
-  //clears the page
+  //clears the page, and adds a message to get started
 
-  resultsDiv.innerHTML = '';
+  resultsDiv.innerHTML = `
+    <h2>Type a zip code above to get started</h2>
+     `;
   document.getElementById('zip-code').value = '';
 });
 
-// makes a default GET request to opendb api to the default zip code
+
+
+      //add functionality to search by pressing enter
+searchForm.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    
+    // get the zip code that user entered, or uses the default if no zip code was entered
+    const zipCode = document.getElementById('zip-code').value || defaultZipCode;
+        
+    // searches for breweries by the zip code
+    search(zipCode);
+  }
+});
+
+
+/*///////////////
+//Default event//
+///////////////*/
+
+
+// makes a default GET request to openbrewerydb api to the default zip code
 fetch(`https://api.openbrewerydb.org/breweries?by_postal=10001`)
   .then((response) => {
     // converts the response to JSON
@@ -75,23 +112,12 @@ fetch(`https://api.openbrewerydb.org/breweries?by_postal=10001`)
                   <h2>${brewery.name}</h2>
                 </div>
                 <div class="card-body">
-                  <p>${brewery.street}</p>
+                  <p>${brewery.street || 'Not Listed'}</p>
                   <p>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
-                  <p>${brewery.phone}</p>
+                  <p>${brewery.phone || 'Unavailable'}</p>
                 </div>
               </div>
           `
           })
-  });
-      //add functionality to search by pressing enter
-  searchForm.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-
-      // get the zip code that user entered, or uses the default if no zip code was entered
-      const zipCode = document.getElementById('zip-code').value || defaultZipCode;
-    
-      // searches for breweries by the zip code
-      search(zipCode);
-    }
+          resultsDiv.innerHTML += '<h2>End of Search Results</h2>';
   });

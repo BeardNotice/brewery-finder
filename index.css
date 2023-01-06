@@ -1,9 +1,13 @@
 
 
 body {
-  font-family: sans-serif;
+  font-family: monospace;
   color:rgba(228, 226, 226);
-  background-color:rgba(0, 0, 0)
+  background-color:rgb(80, 80, 80)
+}
+
+h3 {
+  font-family:monospace
 }
 
 #search-form {
@@ -42,7 +46,7 @@ button[type="button"] {
 }
 
 button[type="button"]:hover {
-  background-color: #0016d9;
+  background-color: #5362e6;
 }
 
 .card {
@@ -77,7 +81,7 @@ button[type="button"]:hover {
 .card-body p {
   margin: 0;
   font-size: 1em;
-  color: rgb(182, 182, 182);
+  color: rgb(235, 233, 233);
 }
 
 .brewery {
@@ -89,9 +93,8 @@ button[type="button"]:hover {
   font-size: 1.2em;
 }
 
-/*.brewery p {
+.brewery p {
   margin: 0;
   font-size: 1em;
   color: rgb(235, 232, 232);
 }
-*/
