@@ -60,14 +60,14 @@ document.getElementById('reset-button').addEventListener('click', () => {
   document.getElementById('zip-code').value = '';
 });
 
-// Making a default GET request to an external API to get the default zip code
+// makes a default GET request to opendb api to the default zip code
 fetch(`https://api.openbrewerydb.org/breweries?by_postal=10001`)
   .then((response) => {
-    // Converts the response to JSON
+    // converts the response to JSON
     return response.json();
   })
   .then((defaultBreweries) => {
-          // Displays the default search results
+          // displays the default search results
           defaultBreweries.forEach((brewery) => {
             resultsDiv.innerHTML += `
               <div class="card">
@@ -83,7 +83,7 @@ fetch(`https://api.openbrewerydb.org/breweries?by_postal=10001`)
           `
           })
   });
-      //Add functionality to search by pressing enter
+      //add functionality to search by pressing enter
   searchForm.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();

@@ -1,5 +1,9 @@
+
+
 body {
   font-family: sans-serif;
+  color:rgba(228, 226, 226);
+  background-color:rgba(0, 0, 0)
 }
 
 #search-form {
@@ -38,7 +42,7 @@ button[type="button"] {
 }
 
 button[type="button"]:hover {
-  background-color: #777;
+  background-color: #0016d9;
 }
 
 .card {
@@ -49,29 +53,31 @@ button[type="button"]:hover {
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(228, 226, 226, 0.2);
 }
 
 .card-header {
   padding: 1em;
-  background-color: #f1f1f1;
+  background-color: #e2e2e2;
+  color:aliceblue;
   border-radius: 5px 5px 0 0;
 }
 
 .card-header h2 {
   margin: 0;
   font-size: 1.2em;
+  color:#0074d9;
 }
 
 .card-body {
   padding: 1em;
-  background-color: #fff;
+  background-color: rgb(134, 130, 130);
 }
 
 .card-body p {
   margin: 0;
   font-size: 1em;
-  color: #666;
+  color: rgb(182, 182, 182);
 }
 
 .brewery {
@@ -83,8 +89,9 @@ button[type="button"]:hover {
   font-size: 1.2em;
 }
 
-.brewery p {
+/*.brewery p {
   margin: 0;
   font-size: 1em;
-  color: #666;
+  color: rgb(235, 232, 232);
 }
+*/
