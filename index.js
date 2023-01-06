@@ -4,14 +4,14 @@
 const searchForm = document.getElementById('search-form');
 const resultsDiv = document.getElementById('results');
 
-// Add a submit event listener to the search form
+// Adds a submit event listener to the search form
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
   // Gets the zip code that the user entered
   const zipCode = document.getElementById('zip-code').value;
 
-console.log(zipCode);
+//console.log(zipCode);
 
   // Makes a GET request to the OpenBreweryDB API to search for breweries by zip code
   fetch(`https://api.openbrewerydb.org/breweries?by_postal=${zipCode}`)
@@ -47,4 +47,11 @@ console.log(zipCode);
         `;
       });
     });
+});
+
+// Adds an event listener for the reset button
+document.getElementById('reset-button').addEventListener('click', () => {
+  // Clears the search results and the zip code input
+  resultsDiv.innerHTML = '';
+  document.getElementById('zip-code').value = '';
 });
