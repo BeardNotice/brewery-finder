@@ -1,4 +1,4 @@
-// gets a reference to the search form and results div
+//references to the search form and results div
 const searchForm = document.getElementById('search-form');
 const resultsDiv = document.getElementById('results');
 
@@ -37,7 +37,7 @@ const search = (zipCode) => {
               <p>${brewery.street || 'Not Listed'}</p>
               <p>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
               <br>
-              <p>${brewery.phone || 'Phone Number Unavailable'}</p>
+              <p>Phone: ${brewery.phone || 'Phone Number Unavailable'}</p>
               <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`: 'No Website Available'}</p>
             </div>
           </div>
@@ -98,54 +98,4 @@ searchForm.addEventListener('keydown', (event) => {
 //Default event//
 ///////////////*/
 
-
-// makes a default GET request to openbrewerydb api to the default zip code
-fetch(`https://api.openbrewerydb.org/breweries?by_postal=10001`)
-  .then((response) => {
-    // converts the response to JSON
-    return response.json();
-  })
-  .then((defaultBreweries) => {
-          // displays the default search results
-          defaultBreweries.forEach((brewery) => {
-            resultsDiv.innerHTML += `
-              <div class="card">
-                <div class="card-header">
-                  <h2>${brewery.name}</h2>
-                </div>
-                <div class="card-body">
-                  <p>${brewery.street || 'No Address Provided'}</p>
-                  <p>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
-                  <br>
-                  <p>${brewery.phone || 'Phone Number Unavailable'}</p>
-                  <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`: 'No Website Available'}</p>
-                </div>
-              </div>
-          `
-          })
-          resultsDiv.innerHTML += '<h2>End of Search Results</h2>';
-  });
-
-
- //mouseover event
-
- // Select the search results div
-const mouseoverDiv = document.querySelector('.search-results');
-
-// Add a mouseover event listener to the search results div
-mouseoverDiv.addEventListener('mouseover', (event) => {
-  // Check if the target of the event is a card
-  if (event.target.classList.contains('card')) {
-    // If the target is a card, change the background color to light gray
-    event.target.style.backgroundColor = 'lightgray';
-  }
-});
-
-// Add a mouseout event listener to the search results div
-mouseoverDiv.addEventListener('mouseout', (event) => {
-  // Check if the target of the event is a card
-  if (event.target.classList.contains('card')) {
-    // If the target is a card, change the background color back to white
-    event.target.style.backgroundColor = 'white';
-  }
-});
+search(defaultZipCode);
