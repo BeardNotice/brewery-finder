@@ -19,7 +19,5 @@ A web app that allows users to search for breweries by zip code using the OpenBr
 * [OpenBreweryDB API](https://www.openbrewerydb.org)
 
 ## License
-## MIT
-### The MIT License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
-`[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
+### MIT
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
