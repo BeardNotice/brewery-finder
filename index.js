@@ -104,8 +104,10 @@ searchForm.addEventListener('keydown', (event) => {
 });
 
   //adds a window resize event listener
-window.addEventListener('resize', function() {
-  var cards = document.querySelectorAll(.card);
+window.addEventListener('resize', () => {
+  var width = window.innerWidth;
+  var cards = array.from(document.querySelectorAll('.card'));
+
   
 });
 
