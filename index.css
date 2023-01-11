@@ -3,11 +3,12 @@
 body {
   font-family: monospace;
   color:rgba(228, 226, 226);
-  background-color:rgb(80, 80, 80)
+  background-color:rgb(80, 80, 80);
+  text-align:center;
 }
 
 h3 {
-  font-family:monospace
+  font-family:monospace;
 }
 
 #search-form {
