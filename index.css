@@ -13,6 +13,7 @@ h3 {
 #search-form {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 #zip-code {
@@ -54,6 +55,7 @@ button[type="button"]:hover {
   transition: 0.3s;
   border-radius: 5px;
   margin-bottom: 1em;
+  text-align: center;
 }
 
 .card:hover {

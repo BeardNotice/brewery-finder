@@ -111,12 +111,15 @@ window.addEventListener('resize', () => {
 
   //using map function to change characteristics of the cards
   cards.map(card => {
-    if (width < 600) {
-      card.querySelector('h2').style.fontSize = '0.8em';
-      card.querySelectorAll('p').forEach(p => {p.style.fontSize = '0.6em'});
+    if (width < 300) {
+      card.querySelector('h2').style.fontSize = '1em';
+      card.querySelectorAll('p').forEach(p => {p.style.fontSize = '0.8em'});
+    } else if (width>=400){
+      card.querySelector('h2').style.fontSize = '1.6em';
+      card.querySelectorAll('p').forEach(p => {p.style.fontSize = '1.4em'});
     } else {
-      card.querySelector('h2').style.fontSize = '1.2em';
-      card.querySelectorAll('p').forEach(p => {p.style.fontSize = '1em'});
+      card.querySelector('h2').style.fontSize = '2em';
+      card.querySelectorAll('p').forEach(p => {p.style.fontSize = '1.8em'});
     }
   })
 
