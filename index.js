@@ -105,10 +105,18 @@ searchForm.addEventListener('keydown', (event) => {
 
   //adds a window resize event listener
 window.addEventListener('resize', () => {
+  //created variables for width and cards
   var width = window.innerWidth;
-  var cards = array.from(document.querySelectorAll('.card'));
+  var cards = [...document.querySelectorAll('.card')];
 
-  
+  //using map function to change characteristics of the cards
+  cards.map(card => {
+    if (width < 600) {
+      card.querySelector('h2').style.fontSize = '0.8em';
+      card.querySelector('p').style.fontSize = '0.6em';
+    }
+  })
+
 });
 
 /*///////////////
