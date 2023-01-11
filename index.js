@@ -113,7 +113,10 @@ window.addEventListener('resize', () => {
   cards.map(card => {
     if (width < 600) {
       card.querySelector('h2').style.fontSize = '0.8em';
-      card.querySelector('p').style.fontSize = '0.6em';
+      card.querySelectorAll('p').forEach(p => {p.style.fontSize = '0.6em'});
+    } else {
+      card.querySelector('h2').style.fontSize = '1.2em';
+      card.querySelectorAll('p').forEach(p => {p.style.fontSize = '1em'});
     }
   })
 
