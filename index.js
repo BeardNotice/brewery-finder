@@ -47,7 +47,8 @@ const search = (zipCode) => {
               <p>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
               <br>
               <p>Phone: ${brewery.phone || 'No phone number available'}</p>
-              <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`: 'No Website Available'}</p>
+              <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`:
+               'No Website Available'}</p>
             </div>
           </div>
         `;
@@ -102,6 +103,11 @@ searchForm.addEventListener('keydown', (event) => {
   }
 });
 
+  //adds a window resize event listener
+window.addEventListener('resize', function() {
+  var cards = document.querySelectorAll(.card);
+  
+});
 
 /*///////////////
 //Default event//
