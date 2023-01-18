@@ -1,7 +1,4 @@
-
-/*/////////
-/Variables/
-/////////*/
+/*Variables*/
 
 //references to the search form and results divs
 const searchForm = document.getElementById('search-form');
@@ -10,9 +7,7 @@ const resultsDiv = document.getElementById('results');
 //this variable sets the default zip code
 const defaultZipCode = '10001';
 
-/*///////////
-//Functions//
-///////////*/
+/*Functions*/
 
 //function to search for breweries by zip code
 const search = (zipCode) => {
@@ -59,25 +54,22 @@ const search = (zipCode) => {
     });
   };
 
+/*Event Listeners*/
 
-/*///////////////
-/Event Listeners/
-///////////////*/
-
-// submit event listener
+//submit event listener
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  // gets the zip code that the user entered, or uses the default if no zip code was entered
+  //gets the zip code that the user entered, or uses the default if no zip code was entered
   const zipCode = document.getElementById('zip-code').value || defaultZipCode;
 
-  // runs the search function
+  //runs the search function
   search(zipCode);
 });
 
 
 
-// reset button event listener
+//reset button event listener
 document.getElementById('reset-button').addEventListener('click', () => {
 
   //clears the page, and adds a message to get started
@@ -95,10 +87,10 @@ searchForm.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     event.preventDefault();
     
-    // gets the zip code that user entered, or uses the default if no zip code was entered
+    //gets the zip code that user entered, or uses the default if no zip code was entered
     const zipCode = document.getElementById('zip-code').value || defaultZipCode;
         
-    // searches for breweries by the zip code
+    //searches for breweries by the zip code
     search(zipCode);
   }
 });
@@ -125,8 +117,6 @@ window.addEventListener('resize', () => {
 
 });
 
-/*///////////////
-//Default event//
-///////////////*/
+/*Default event*/
 
 search(defaultZipCode);
