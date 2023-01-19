@@ -4,7 +4,7 @@
 const searchForm = document.getElementById('search-form');
 const resultsDiv = document.getElementById('results');
 
-//this variable sets the default zip code
+
 const defaultZipCode = '10001';
 
 /*Functions*/
@@ -19,18 +19,17 @@ const search = (zipCode) => {
     })
     .then((breweries) => {
       
-      //console logged to check and make sure breweries were returned correctly
-      //console.log(breweries);
 
       // clears the previous search results
       resultsDiv.innerHTML = '';
 
 
       if (breweries.length === 0) {
-        // if there are no results, display the following message
         resultsDiv.innerHTML = '<h2>No Breweries listed in this area, try another zip code</h2>';
+      
       } else {
-      // displays the search results as a card, per card
+      
+        // displays the search results as a card, per card
       breweries.forEach((brewery) => {
         resultsDiv.innerHTML += `
           <div class="card">
@@ -48,7 +47,8 @@ const search = (zipCode) => {
           </div>
         `;
       });
-      //adds 'End of Search Results' to the end of the search results
+
+
       resultsDiv.innerHTML += '<h2>End of Search Results</h2>';
     }
     });
@@ -63,7 +63,7 @@ searchForm.addEventListener('submit', (event) => {
   //gets the zip code that the user entered, or uses the default if no zip code was entered
   const zipCode = document.getElementById('zip-code').value || defaultZipCode;
 
-  //runs the search function
+
   search(zipCode);
 });
 
@@ -87,17 +87,17 @@ searchForm.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     event.preventDefault();
     
-    //gets the zip code that user entered, or uses the default if no zip code was entered
+
     const zipCode = document.getElementById('zip-code').value || defaultZipCode;
         
-    //searches for breweries by the zip code
+
     search(zipCode);
   }
 });
 
   //adds a window resize event listener
 window.addEventListener('resize', () => {
-  //created variables for width and cards
+
   var width = window.innerWidth;
   var cards = [...document.querySelectorAll('.card')];
 
