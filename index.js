@@ -18,7 +18,7 @@ const search = (zipCode) => {
       return response.json();
     })
     .then((breweries) => {
-      
+      console.log(1)
 
       // clears the previous search results
       resultsDiv.innerHTML = '';
@@ -30,6 +30,11 @@ const search = (zipCode) => {
       } else {
       
         // displays the search results as a card, per card
+
+
+        /*Add a like button to each brewery card. The button should have a 0 on it.
+         When the button is clicked, the zero should increment.*/
+
       breweries.forEach((brewery) => {
         resultsDiv.innerHTML += `
           <div class="card">
@@ -43,15 +48,52 @@ const search = (zipCode) => {
               <p>Phone: ${brewery.phone || 'No phone number available'}</p>
               <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`:
                'No Website Available'}</p>
+               
+
+
+               
             </div>
           </div>
         `;
+        /*Grab the div 
+	Create a new element (button)
+	Add innertext to the button
+	Add an event listener to the button
+	Append the button to the div
+  */
+        //const para = document.createElement("p");
+        //para.innerText = "This is a paragraph";
+//document.body.appendChild(para);
+        const button = document.createElement("button");
+        button.innerText = "0";
+
+        button.addEventListener("click", () => {
+          console.log("clicked")
+        })
+
+
+        resultsDiv.appendChild(button);
+
+
       });
 
 
       resultsDiv.innerHTML += '<h2>End of Search Results</h2>';
+
+      /*code from 1/19/23*/
+      //document.getElementById('liker').addEventListener('click', () =>{
+       // console.log(document.getElementById('liker'));
+        //document.getElementById('liker').innerHTML += '1';
+     // })
+
+
+
+
     }
     });
+    console.log(2)
+          //liker button listener
+
   };
 
 /*Event Listeners*/
