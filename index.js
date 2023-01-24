@@ -18,7 +18,6 @@ const search = (zipCode) => {
       return response.json();
     })
     .then((breweries) => {
-      console.log(1)
 
       // clears the previous search results
       resultsDiv.innerHTML = '';
@@ -36,6 +35,7 @@ const search = (zipCode) => {
          When the button is clicked, the zero should increment.*/
 
       breweries.forEach((brewery) => {
+
         resultsDiv.innerHTML += `
           <div class="card">
             <div class="card-header">
@@ -48,51 +48,36 @@ const search = (zipCode) => {
               <p>Phone: ${brewery.phone || 'No phone number available'}</p>
               <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`:
                'No Website Available'}</p>
-               
-
-
-               
+               <button class="cb" type="button">0</button>
             </div>
           </div>
         `;
-        /*Grab the div 
-	Create a new element (button)
-	Add innertext to the button
-	Add an event listener to the button
-	Append the button to the div
-  */
-        //const para = document.createElement("p");
-        //para.innerText = "This is a paragraph";
-//document.body.appendChild(para);
-        const button = document.createElement("button");
-        button.innerText = "0";
 
-        button.addEventListener("click", () => {
-          console.log("clicked")
-        })
-
-
-        resultsDiv.appendChild(button);
-
+        //problem code
+        
+        let count=0;
+        const countButtons = document.querySelectorAll(".cb");
+        countButtons.forEach((button, index) => {
+          button.setAttribute("id", "button-"+index);
+          const buttonId = document.getElementById(`button-${index}`)
+          buttonId.addEventListener("click", () =>{
+            count++;
+            buttonId.innerHTML = count;
+          });
+        }); 
 
       });
 
 
       resultsDiv.innerHTML += '<h2>End of Search Results</h2>';
 
-      /*code from 1/19/23*/
-      //document.getElementById('liker').addEventListener('click', () =>{
-       // console.log(document.getElementById('liker'));
-        //document.getElementById('liker').innerHTML += '1';
-     // })
 
 
 
 
     }
     });
-    console.log(2)
-          //liker button listener
+
 
   };
 
@@ -158,6 +143,7 @@ window.addEventListener('resize', () => {
   })
 
 });
+
 
 /*Default event*/
 
