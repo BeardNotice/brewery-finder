@@ -51,44 +51,12 @@ const search = (zipCode) => {
               <p>Phone: ${brewery.phone || 'No phone number available'}</p>
               <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`:
                'No Website Available'}</p>
-               <button class="cb" type="button">0</button>
+
             </div>
           </div>
         `;
 
-  //Grab the div 
- 	//Create a new element (button)
- 	//Add innertext to the button
- 	//Add an event listener to the button
- 	//Append the button to the div
-
-
-
-
-        //problem code
-
-       /* let count=0;
-        const countButtons = document.querySelectorAll(".cb");
-        countButtons.forEach((button, index) => {
-          button.setAttribute("id", "button-"+index);
-          const buttonId = document.getElementById(`button-${index}`)
-          console.log(buttonId);
-          console.log(count);
-          buttonId.addEventListener("click", () =>{
-            count++;
-            buttonId.innerHTML = count;
-          });*/
-        });
-
-
-/* type 2
-        const button = resultsDiv.querySelector('.cb');
-        button.addEventListener('click', (event) => {
-            event.target.innerHTML = parseInt(event.target.innerHTML) + 1;
-        });
-
       });
- */
 
       resultsDiv.innerHTML += '<h2>End of Search Results</h2>';
 
@@ -98,7 +66,6 @@ const search = (zipCode) => {
 
     }
     });
-
 
   };
 
@@ -138,10 +105,15 @@ searchForm.addEventListener('keydown', (event) => {
 
     const zipCode = document.getElementById('zip-code').value || defaultZipCode;
         
+    console.log(width)
 
     search(zipCode);
   }
 });
+
+//code from line 70
+
+
 
   //adds a window resize event listener
 window.addEventListener('resize', () => {
