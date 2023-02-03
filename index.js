@@ -67,7 +67,7 @@ const search = (zipCode) => {
 
         //problem code
 
-        let count=0;
+       /* let count=0;
         const countButtons = document.querySelectorAll(".cb");
         countButtons.forEach((button, index) => {
           button.setAttribute("id", "button-"+index);
@@ -77,7 +77,7 @@ const search = (zipCode) => {
           buttonId.addEventListener("click", () =>{
             count++;
             buttonId.innerHTML = count;
-          });
+          });*/
         });
 
 
