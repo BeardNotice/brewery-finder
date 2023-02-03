@@ -4,7 +4,6 @@
 const searchForm = document.getElementById('search-form');
 const resultsDiv = document.getElementById('results');
 
-
 const defaultZipCode = '10001';
 
 /*Functions*/
@@ -36,6 +35,10 @@ const search = (zipCode) => {
 
       breweries.forEach((brewery) => {
 
+
+
+
+
         resultsDiv.innerHTML += `
           <div class="card">
             <div class="card-header">
@@ -53,21 +56,39 @@ const search = (zipCode) => {
           </div>
         `;
 
+  //Grab the div 
+ 	//Create a new element (button)
+ 	//Add innertext to the button
+ 	//Add an event listener to the button
+ 	//Append the button to the div
+
+
+
+
         //problem code
-        
+
         let count=0;
         const countButtons = document.querySelectorAll(".cb");
         countButtons.forEach((button, index) => {
           button.setAttribute("id", "button-"+index);
           const buttonId = document.getElementById(`button-${index}`)
+          console.log(buttonId);
+          console.log(count);
           buttonId.addEventListener("click", () =>{
             count++;
             buttonId.innerHTML = count;
           });
-        }); 
+        });
+
+
+/* type 2
+        const button = resultsDiv.querySelector('.cb');
+        button.addEventListener('click', (event) => {
+            event.target.innerHTML = parseInt(event.target.innerHTML) + 1;
+        });
 
       });
-
+ */
 
       resultsDiv.innerHTML += '<h2>End of Search Results</h2>';
 
