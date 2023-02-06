@@ -1,5 +1,5 @@
 /*Variables*/
-
+let count = 0;
 //references to the search form and results divs
 const searchForm = document.getElementById('search-form');
 const resultsDiv = document.getElementById('results');
@@ -39,34 +39,21 @@ const search = (zipCode) => {
         card.classList.add("card");
 
         const header = document.createElement("header")
+        header.classList.add("card-header")
         header.innerHTML = `<h2>${brewery.name}</h2>`
+        
         const body = document.createElement("div")
+        body.classList.add("card-body")
         body.innerHTML = `<p>${brewery.street || 'Not Listed'}</p>
+
         <p>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
         <br>
         <p>Phone: ${brewery.phone || 'No phone number available'}</p>
         <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`:
-         'No Website Available'}</p>
-         <br>`        
+         'No Website Available'}</p>`
         card.appendChild(header)
         card.appendChild(body)
         resultsDiv.appendChild(card)
-        /* resultsDiv.innerHTML += `
-          <div class="card">
-            <div class="card-header">
-              <h2>${brewery.name}</h2>
-            </div>
-            <div class="card-body">
-              <p>${brewery.street || 'Not Listed'}</p>
-              <p>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
-              <br>
-              <p>Phone: ${brewery.phone || 'No phone number available'}</p>
-              <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`:
-               'No Website Available'}</p>
-
-            </div>
-          </div>
-        `; */
 
       });
 
