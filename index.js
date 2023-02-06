@@ -41,6 +41,8 @@ const search = (zipCode) => {
         const header = document.createElement("header")
         header.innerHTML = `<h2>${brewery.name}</h2>`
 
+        card.appendChild(header)
+        resultsDiv.appendChild(card)
         /* resultsDiv.innerHTML += `
           <div class="card">
             <div class="card-header">
