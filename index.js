@@ -55,13 +55,29 @@ const search = (zipCode) => {
         card.appendChild(body)
         resultsDiv.appendChild(card)
 
+        //older code referenced in blog post
+
+        /* resultsDiv.innerHTML += `
+           <div class="card">
+             <div class="card-header">
+               <h2>${brewery.name}</h2>
+             </div>
+             <div class="card-body">
+               <p>${brewery.street || 'Not Listed'}</p>
+               <p>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
+               <br>
+               <p>Phone: ${brewery.phone || 'No phone number available'}</p>
+               <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`:
+                'No Website Available'}</p>
+
+             </div>
+           </div>
+         `; */
+
+
       });
 
       resultsDiv.innerHTML += '<h2>End of Search Results</h2>';
-
-
-
-
 
     }
     });
