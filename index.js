@@ -34,12 +34,14 @@ const search = (zipCode) => {
          When the button is clicked, the zero should increment.*/
 
       breweries.forEach((brewery) => {
+        
+        const card = document.createElement("div");
+        card.classList.add("card");
 
+        const header = document.createElement("header")
+        header.innerHTML = `<h2>${brewery.name}</h2>`
 
-
-
-
-        resultsDiv.innerHTML += `
+        /* resultsDiv.innerHTML += `
           <div class="card">
             <div class="card-header">
               <h2>${brewery.name}</h2>
@@ -54,7 +56,7 @@ const search = (zipCode) => {
 
             </div>
           </div>
-        `;
+        `; */
 
       });
 
@@ -105,7 +107,6 @@ searchForm.addEventListener('keydown', (event) => {
 
     const zipCode = document.getElementById('zip-code').value || defaultZipCode;
         
-    console.log(width)
 
     search(zipCode);
   }
