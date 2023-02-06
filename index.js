@@ -40,8 +40,16 @@ const search = (zipCode) => {
 
         const header = document.createElement("header")
         header.innerHTML = `<h2>${brewery.name}</h2>`
-
+        const body = document.createElement("div")
+        body.innerHTML = `<p>${brewery.street || 'Not Listed'}</p>
+        <p>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
+        <br>
+        <p>Phone: ${brewery.phone || 'No phone number available'}</p>
+        <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`:
+         'No Website Available'}</p>
+         <br>`        
         card.appendChild(header)
+        card.appendChild(body)
         resultsDiv.appendChild(card)
         /* resultsDiv.innerHTML += `
           <div class="card">
