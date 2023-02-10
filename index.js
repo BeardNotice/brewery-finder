@@ -42,13 +42,17 @@ const search = (zipCode) => {
         <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`:
         'No Website Available'}</p>`
 
+
+
         card.appendChild(header)
         card.appendChild(body)
         resultsDiv.appendChild(card)
 
       });
 
-      resultsDiv.innerHTML += '<h2>End of Search Results</h2>';
+      const endOfResults = document.createElement("h2")
+      endOfResults.innerText = "End of Search Results"
+      resultsDiv.appendChild(endOfResults)
 
     }
     });
@@ -115,10 +119,12 @@ window.addEventListener('resize', () => {
 
 });
 
-
 /*Default event*/
 
 search(defaultZipCode);
+
+
+
 
 
  //older code referenced in blog post, originally on line 32
