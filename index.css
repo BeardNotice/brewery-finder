@@ -71,7 +71,7 @@ button[type="button"]:hover {
 
 .card-header h2 {
   margin: 0;
-  font-size: 1.2em;
+  font-size: 1.8em;
   color:#0074d9;
 }
 
@@ -83,6 +83,6 @@ button[type="button"]:hover {
 
 .card-body p {
   margin: 0;
-  font-size: 1em;
+  font-size: 1.5em;
   color: rgb(235, 233, 233);
 }
