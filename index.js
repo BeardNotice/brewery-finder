@@ -1,6 +1,7 @@
 /*Variables*/
 const searchForm = document.getElementById('search-form');
 const resultsDiv = document.getElementById('results');
+const resetButton = document.getElementById('reset-button');
 
 const defaultZipCode = '10001';
 
@@ -72,7 +73,7 @@ searchForm.addEventListener('submit', (event) => {
 
 
 //reset button event listener
-document.getElementById('reset-button').addEventListener('click', () => {
+resetButton.addEventListener('click', () => {
 
   resultsDiv.innerHTML = `
     <h2>Type a zip code above to get started</h2>
