@@ -42,8 +42,6 @@ const search = (zipCode) => {
         <p>${brewery.website_url ? `<a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>`:
         'No Website Available'}</p>`
 
-
-
         card.appendChild(header)
         card.appendChild(body)
         resultsDiv.appendChild(card)
@@ -51,7 +49,7 @@ const search = (zipCode) => {
       });
 
       const endOfResults = document.createElement("h2")
-      endOfResults.innerText = "End of Search Results"
+      endOfResults.innerText = "End of Search Results"    
       resultsDiv.appendChild(endOfResults)
 
     }
@@ -100,20 +98,22 @@ searchForm.addEventListener('keydown', (event) => {
   //adds a window resize event listener
 window.addEventListener('resize', () => {
 
-  var width = window.innerWidth;
-  var cards = [...document.querySelectorAll('.card')];
-
-  //using map function to change characteristics of the cards
+  const width = window.innerWidth
+  const cards = [...document.querySelectorAll('.card')]
+  
   cards.map(card => {
+
+    function cardSize(number){
+      card.querySelector('h2').style.fontSize = `${1.2 * number}em`;
+      card.querySelectorAll('p').forEach(p => {p.style.fontSize = `${1 * number}em`});
+    }
+
     if (width<800) {
-      card.querySelector('h2').style.fontSize = '1.2em';
-      card.querySelectorAll('p').forEach(p => {p.style.fontSize = '1em'});
+      cardSize(1)
     } else if (width>800 && width<=1200){
-      card.querySelector('h2').style.fontSize = '1.6em';
-      card.querySelectorAll('p').forEach(p => {p.style.fontSize = '1.4em'});
+      cardSize(1.5)
     } else {
-      card.querySelector('h2').style.fontSize = '2.5em';
-      card.querySelectorAll('p').forEach(p => {p.style.fontSize = '2em'});
+      cardSize(2)
     }
   })
 
